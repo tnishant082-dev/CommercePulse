@@ -1,0 +1,60 @@
+table DimCustomer
+	lineageTag: 0374d8b4-31cd-48b7-bd59-434b3bd59403
+
+	column CustomerKey
+		dataType: int64
+		lineageTag: d2cd74e5-a068-4f2a-8fb9-9f790d360fb6
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	column CustomerID
+		dataType: int64
+		lineageTag: 42cbb86d-fe96-4d32-9fd4-e487c8da45a5
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+	column FirstPurchase
+		dataType: dateTime
+		lineageTag: 27e35764-ca15-43c2-a516-c72053d61530
+		summarizeBy: none
+		sourceColumn: FirstPurchase
+
+	column LastPurchase
+		dataType: dateTime
+		lineageTag: f9a8882b-6ff5-4919-ab8d-ae0da2ac3fb0
+		summarizeBy: none
+		sourceColumn: LastPurchase
+
+	column Orders
+		dataType: int64
+		lineageTag: 3cfa7c47-aeb6-4337-ac13-4c2bcf273d08
+		summarizeBy: sum
+		sourceColumn: Orders
+
+	column Revenue
+		dataType: double
+		lineageTag: 57ba38d2-9965-4d91-938d-a71871d2c498
+		summarizeBy: sum
+		sourceColumn: Revenue
+
+	column Lines
+		dataType: int64
+		lineageTag: 5113853b-3910-4890-89e3-f02d82271e3c
+		summarizeBy: sum
+		sourceColumn: Lines
+
+	column Country
+		dataType: string
+		lineageTag: f4aa1a4b-da5d-4611-b1ba-687a075ea468
+		summarizeBy: none
+		sourceColumn: Country
+
+	partition DimCustomer = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\dim_customer.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"CustomerKey", Int64.Type}, {"CustomerID", Int64.Type}, {"FirstPurchase", type datetime}, {"LastPurchase", type datetime}, {"Orders", Int64.Type}, {"Revenue", type number}, {"Lines", Int64.Type}, {"Country", type text}})
+				in
+				    Typed

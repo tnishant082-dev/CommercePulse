@@ -1,0 +1,54 @@
+table DimProduct
+	lineageTag: 7420c486-8984-431d-bbb5-fe9e421abe0a
+
+	column StockCode
+		dataType: string
+		lineageTag: b31f9077-09d2-499b-adc5-7a160013e980
+		summarizeBy: none
+		sourceColumn: StockCode
+
+	column Description
+		dataType: string
+		lineageTag: d432fe3a-21b7-4d07-8e8e-c09c260aa397
+		summarizeBy: none
+		sourceColumn: Description
+
+	column Orders
+		dataType: int64
+		lineageTag: c7513449-79d0-43ba-b1ce-7d44f9af9cad
+		summarizeBy: sum
+		sourceColumn: Orders
+
+	column Units
+		dataType: int64
+		lineageTag: 8f5198d2-394c-4021-b631-f0ed8f055359
+		summarizeBy: sum
+		sourceColumn: Units
+
+	column Revenue
+		dataType: double
+		lineageTag: 103842ed-adca-4e67-8d35-99f7e0120ec6
+		summarizeBy: sum
+		sourceColumn: Revenue
+
+	column AvgPrice
+		dataType: double
+		lineageTag: d83736a7-449d-4538-a1bd-471f0bb3c1c2
+		summarizeBy: avg
+		sourceColumn: AvgPrice
+
+	column ProductKey
+		dataType: int64
+		lineageTag: 83276560-58ab-48ff-90da-e17c2a8cc3fd
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	partition DimProduct = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\dim_product.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"StockCode", type text}, {"Description", type text}, {"Orders", Int64.Type}, {"Units", Int64.Type}, {"Revenue", type number}, {"AvgPrice", type number}, {"ProductKey", Int64.Type}})
+				in
+				    Typed

@@ -1,0 +1,66 @@
+table DimDate
+	lineageTag: e9df7860-9678-42aa-8474-dad67cc70fab
+
+	column DateKey
+		dataType: int64
+		lineageTag: 21a9c2c0-50d1-4538-ae10-2e7d72c1e245
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column Date
+		dataType: dateTime
+		lineageTag: 7c9caa55-72b8-4c7a-b70f-1b135e5a34a1
+		summarizeBy: none
+		sourceColumn: Date
+
+	column Year
+		dataType: int64
+		lineageTag: cb63dec6-97c3-4e8e-9b23-92a0608d9bb3
+		summarizeBy: none
+		sourceColumn: Year
+
+	column Month
+		dataType: int64
+		lineageTag: f38275df-b4e9-41bf-ac32-997f2cd3bb0c
+		summarizeBy: none
+		sourceColumn: Month
+
+	column MonthName
+		dataType: string
+		lineageTag: df1cfd83-adb7-4159-aa71-fc207bccb593
+		summarizeBy: none
+		sourceColumn: MonthName
+
+	column YearMonth
+		dataType: string
+		lineageTag: e800951b-98f8-4ca3-ac4f-0d44e4711f3a
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	column Quarter
+		dataType: string
+		lineageTag: 98bf7cdc-a248-4866-b72f-84594f942b61
+		summarizeBy: none
+		sourceColumn: Quarter
+
+	column DayOfWeek
+		dataType: string
+		lineageTag: 6f21017b-7ad3-4843-a996-835ad18ea4a1
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+
+	column IsWeekend
+		dataType: int64
+		lineageTag: f9b5819f-f649-40d6-8d56-fdfddfcdf080
+		summarizeBy: sum
+		sourceColumn: IsWeekend
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\dim_date.csv"), [Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"DateKey", Int64.Type}, {"Date", type datetime}, {"Year", Int64.Type}, {"Month", Int64.Type}, {"MonthName", type text}, {"YearMonth", type text}, {"Quarter", type text}, {"DayOfWeek", type text}, {"IsWeekend", Int64.Type}})
+				in
+				    Typed
