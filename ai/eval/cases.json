@@ -1,0 +1,32 @@
+[
+  {
+    "id": "uk_yoy",
+    "question": "Why did UK revenue drop year over year?",
+    "must_include_any": ["United Kingdom", "UK", "2010", "2011", "AOV"],
+    "min_top_score": 0.05
+  },
+  {
+    "id": "peak_month",
+    "question": "What was the peak revenue month?",
+    "must_include_any": ["peaks", "November", "YearMonth", "2010", "2011", "revenue"],
+    "min_top_score": 0.05
+  },
+  {
+    "id": "return_rate",
+    "question": "How large is the return rate?",
+    "must_include_any": ["return", "3.6", "0.036", "%"],
+    "min_top_score": 0.05
+  },
+  {
+    "id": "segments",
+    "question": "Which customer segments drive the most revenue?",
+    "must_include_any": ["Champions", "segment", "RFM", "Loyal"],
+    "min_top_score": 0.04
+  },
+  {
+    "id": "guest_share",
+    "question": "What share of sales lines are guest checkouts?",
+    "must_include_any": ["guest", "23", "Guest"],
+    "min_top_score": 0.04
+  }
+]
