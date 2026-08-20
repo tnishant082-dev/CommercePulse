@@ -1,0 +1,454 @@
+{
+  "period_start": "2009-12-01",
+  "period_end": "2011-12-09",
+  "revenue": 20077305.6,
+  "orders": 39575,
+  "customers": 5862,
+  "aov": 507.32,
+  "units": 11368470,
+  "lines": 1025359,
+  "products": 4908,
+  "countries": 43,
+  "guest_line_share": 0.2286,
+  "return_amount": 731662.8,
+  "return_rate": 0.0364,
+  "uk_revenue": 17189769.6,
+  "uk_revenue_share": 0.8562,
+  "top5_product_revenue_share": 0.0552,
+  "yoy_overlap_months": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+  ],
+  "revenue_2010_overlap": 9799869.34,
+  "revenue_2011_overlap": 9478704.23,
+  "revenue_yoy": -0.0328,
+  "orders_2010_overlap": 19677,
+  "orders_2011_overlap": 18227,
+  "orders_yoy": -0.0737,
+  "customers_2010_overlap": 4216,
+  "customers_2011_overlap": 4214,
+  "customers_yoy": -0.0005,
+  "aov_2010": 498.04,
+  "aov_2011": 520.04,
+  "repeat_customer_rate": 0.7226,
+  "churned_90_rate": 0.5072,
+  "bronze_rows": null,
+  "monthly": [
+    {
+      "YearMonth": "2009-12",
+      "Revenue": 798732.03,
+      "Orders": 1671,
+      "Customers": 952,
+      "Units": 425262,
+      "Lines": 43342,
+      "AOV": 477.9964272890485
+    },
+    {
+      "YearMonth": "2010-01",
+      "Revenue": 621503.43,
+      "Orders": 1089,
+      "Customers": 718,
+      "Units": 390474,
+      "Lines": 30222,
+      "AOV": 570.710220385675
+    },
+    {
+      "YearMonth": "2010-02",
+      "Revenue": 538132.64,
+      "Orders": 1189,
+      "Customers": 771,
+      "Units": 381627,
+      "Lines": 27818,
+      "AOV": 452.5926324642557
+    },
+    {
+      "YearMonth": "2010-03",
+      "Revenue": 762148.53,
+      "Orders": 1647,
+      "Customers": 1051,
+      "Units": 525053,
+      "Lines": 39620,
+      "AOV": 462.74956284153006
+    },
+    {
+      "YearMonth": "2010-04",
+      "Revenue": 646901.86,
+      "Orders": 1437,
+      "Customers": 939,
+      "Units": 366084,
+      "Lines": 32680,
+      "AOV": 450.1752679192763
+    },
+    {
+      "YearMonth": "2010-05",
+      "Revenue": 643835.64,
+      "Orders": 1484,
+      "Customers": 965,
+      "Units": 395447,
+      "Lines": 33235,
+      "AOV": 433.8515094339623
+    },
+    {
+      "YearMonth": "2010-06",
+      "Revenue": 697834.87,
+      "Orders": 1615,
+      "Customers": 1035,
+      "Units": 406253,
+      "Lines": 38226,
+      "AOV": 432.0958947368421
+    },
+    {
+      "YearMonth": "2010-07",
+      "Revenue": 633839.42,
+      "Orders": 1509,
+      "Customers": 925,
+      "Units": 337573,
+      "Lines": 31960,
+      "AOV": 420.0393770709079
+    },
+    {
+      "YearMonth": "2010-08",
+      "Revenue": 674842.89,
+      "Orders": 1402,
+      "Customers": 910,
+      "Units": 471952,
+      "Lines": 31974,
+      "AOV": 481.34300285306705
+    },
+    {
+      "YearMonth": "2010-09",
+      "Revenue": 869727.16,
+      "Orders": 1789,
+      "Customers": 1136,
+      "Units": 583377,
+      "Lines": 40425,
+      "AOV": 486.15268865287874
+    },
+    {
+      "YearMonth": "2010-10",
+      "Revenue": 1095413.63,
+      "Orders": 2244,
+      "Customers": 1492,
+      "Units": 619532,
+      "Lines": 56727,
+      "AOV": 488.1522415329768
+    },
+    {
+      "YearMonth": "2010-11",
+      "Revenue": 1431116.84,
+      "Orders": 2721,
+      "Customers": 1606,
+      "Units": 724294,
+      "Lines": 74800,
+      "AOV": 525.9525321572952
+    },
+    {
+      "YearMonth": "2010-12",
+      "Revenue": 1184572.43,
+      "Orders": 1551,
+      "Customers": 884,
+      "Units": 537522,
+      "Lines": 62457,
+      "AOV": 763.7475370728562
+    },
+    {
+      "YearMonth": "2011-01",
+      "Revenue": 670639.46,
+      "Orders": 1081,
+      "Customers": 739,
+      "Units": 386745,
+      "Lines": 33909,
+      "AOV": 620.3880296022202
+    },
+    {
+      "YearMonth": "2011-02",
+      "Revenue": 508081.54,
+      "Orders": 1093,
+      "Customers": 757,
+      "Units": 282635,
+      "Lines": 26749,
+      "AOV": 464.8504483074108
+    },
+    {
+      "YearMonth": "2011-03",
+      "Revenue": 690591.84,
+      "Orders": 1440,
+      "Customers": 973,
+      "Units": 376198,
+      "Lines": 35317,
+      "AOV": 479.57766666666663
+    },
+    {
+      "YearMonth": "2011-04",
+      "Revenue": 515899.66,
+      "Orders": 1236,
+      "Customers": 853,
+      "Units": 307664,
+      "Lines": 28755,
+      "AOV": 417.3945469255663
+    },
+    {
+      "YearMonth": "2011-05",
+      "Revenue": 740472.33,
+      "Orders": 1668,
+      "Customers": 1054,
+      "Units": 394667,
+      "Lines": 35745,
+      "AOV": 443.92825539568344
+    },
+    {
+      "YearMonth": "2011-06",
+      "Revenue": 738233.99,
+      "Orders": 1525,
+      "Customers": 990,
+      "Units": 388141,
+      "Lines": 35529,
+      "AOV": 484.08786229508195
+    },
+    {
+      "YearMonth": "2011-07",
+      "Revenue": 688802.67,
+      "Orders": 1452,
+      "Customers": 946,
+      "Units": 399302,
+      "Lines": 38205,
+      "AOV": 474.38200413223143
+    },
+    {
+      "YearMonth": "2011-08",
+      "Revenue": 724708.16,
+      "Orders": 1340,
+      "Customers": 933,
+      "Units": 420709,
+      "Lines": 34120,
+      "AOV": 540.8269850746269
+    },
+    {
+      "YearMonth": "2011-09",
+      "Revenue": 1029245.38,
+      "Orders": 1819,
+      "Customers": 1259,
+      "Units": 568719,
+      "Lines": 48714,
+      "AOV": 565.8303353490929
+    },
+    {
+      "YearMonth": "2011-10",
+      "Revenue": 1104063.97,
+      "Orders": 2006,
+      "Customers": 1361,
+      "Units": 619613,
+      "Lines": 58322,
+      "AOV": 550.3808424725822
+    },
+    {
+      "YearMonth": "2011-11",
+      "Revenue": 1453265.98,
+      "Orders": 2751,
+      "Customers": 1660,
+      "Units": 746975,
+      "Lines": 81750,
+      "AOV": 528.2682588149763
+    },
+    {
+      "YearMonth": "2011-12",
+      "Revenue": 614699.25,
+      "Orders": 816,
+      "Customers": 614,
+      "Units": 312652,
+      "Lines": 24758,
+      "AOV": 753.3079044117648
+    }
+  ],
+  "top_countries": [
+    {
+      "Country": "United Kingdom",
+      "Revenue": 17189769.6,
+      "Orders": 36212,
+      "Units": 9337677
+    },
+    {
+      "Country": "EIRE",
+      "Revenue": 640175.31,
+      "Orders": 598,
+      "Units": 340025
+    },
+    {
+      "Country": "Netherlands",
+      "Revenue": 549951.01,
+      "Orders": 216,
+      "Units": 383721
+    },
+    {
+      "Country": "Germany",
+      "Revenue": 388401.32,
+      "Orders": 756,
+      "Units": 225667
+    },
+    {
+      "Country": "France",
+      "Revenue": 317203.44,
+      "Orders": 602,
+      "Units": 273742
+    },
+    {
+      "Country": "Australia",
+      "Revenue": 168417.16,
+      "Orders": 89,
+      "Units": 104074
+    },
+    {
+      "Country": "Spain",
+      "Revenue": 98789.22,
+      "Orders": 147,
+      "Units": 50466
+    },
+    {
+      "Country": "Switzerland",
+      "Revenue": 94247.99,
+      "Orders": 85,
+      "Units": 52720
+    },
+    {
+      "Country": "Sweden",
+      "Revenue": 86319.14,
+      "Orders": 99,
+      "Units": 88537
+    },
+    {
+      "Country": "Denmark",
+      "Revenue": 68560.19,
+      "Orders": 42,
+      "Units": 237852
+    },
+    {
+      "Country": "Belgium",
+      "Revenue": 57303.27,
+      "Orders": 143,
+      "Units": 34873
+    },
+    {
+      "Country": "Portugal",
+      "Revenue": 48868.51,
+      "Orders": 86,
+      "Units": 28187
+    }
+  ],
+  "top_products": [
+    {
+      "StockCode": "22423",
+      "Description": "REGENCY CAKESTAND 3 TIER",
+      "Revenue": 344069.3,
+      "Orders": 3918,
+      "Units": 27536
+    },
+    {
+      "StockCode": "85123A",
+      "Description": "WHITE HANGING HEART T-LIGHT HOLDER",
+      "Revenue": 262768.47000000003,
+      "Orders": 5365,
+      "Units": 96027
+    },
+    {
+      "StockCode": "85099B",
+      "Description": "JUMBO BAG RED RETROSPOT",
+      "Revenue": 183136.14,
+      "Orders": 3989,
+      "Units": 98175
+    },
+    {
+      "StockCode": "23843",
+      "Description": "PAPER CRAFT , LITTLE BIRDIE",
+      "Revenue": 168469.6,
+      "Orders": 1,
+      "Units": 80995
+    },
+    {
+      "StockCode": "47566",
+      "Description": "PARTY BUNTING",
+      "Revenue": 149109.35,
+      "Orders": 2674,
+      "Units": 28362
+    },
+    {
+      "StockCode": "84879",
+      "Description": "ASSORTED COLOUR BIRD ORNAMENT",
+      "Revenue": 131817.81,
+      "Orders": 2807,
+      "Units": 81590
+    },
+    {
+      "StockCode": "22086",
+      "Description": "PAPER CHAIN KIT 50'S CHRISTMAS",
+      "Revenue": 123002.89,
+      "Orders": 2018,
+      "Units": 36534
+    },
+    {
+      "StockCode": "79321",
+      "Description": "CHILLI LIGHTS",
+      "Revenue": 85157.56,
+      "Orders": 1135,
+      "Units": 16763
+    },
+    {
+      "StockCode": "23166",
+      "Description": "MEDIUM CERAMIC TOP STORAGE JAR",
+      "Revenue": 81700.92000000001,
+      "Orders": 247,
+      "Units": 78033
+    },
+    {
+      "StockCode": "22197",
+      "Description": "SMALL POPCORN HOLDER",
+      "Revenue": 80888.34,
+      "Orders": 2322,
+      "Units": 89860
+    },
+    {
+      "StockCode": "22386",
+      "Description": "JUMBO BAG PINK POLKADOT",
+      "Revenue": 77049.38,
+      "Orders": 2245,
+      "Units": 39809
+    },
+    {
+      "StockCode": "84347",
+      "Description": "ROTATING SILVER ANGELS T-LIGHT HLDR",
+      "Revenue": 74380.06999999999,
+      "Orders": 756,
+      "Units": 32498
+    },
+    {
+      "StockCode": "20725",
+      "Description": "LUNCH BAG RED RETROSPOT",
+      "Revenue": 72001.35,
+      "Orders": 3056,
+      "Units": 40752
+    },
+    {
+      "StockCode": "21137",
+      "Description": "BLACK RECORD COVER FRAME",
+      "Revenue": 69295.72,
+      "Orders": 634,
+      "Units": 19945
+    },
+    {
+      "StockCode": "85099F",
+      "Description": "JUMBO BAG STRAWBERRY",
+      "Revenue": 68382.73,
+      "Orders": 1830,
+      "Units": 37072
+    }
+  ]
+}
