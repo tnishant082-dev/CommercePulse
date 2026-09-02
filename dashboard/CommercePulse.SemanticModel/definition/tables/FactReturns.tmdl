@@ -1,0 +1,66 @@
+table FactReturns
+	lineageTag: cd91cb1b-383b-4d7a-8463-1384d1473fc2
+
+	column ReturnKey
+		dataType: int64
+		lineageTag: e9eaf17c-2c0c-4823-8914-9026ee44da3f
+		summarizeBy: none
+		sourceColumn: ReturnKey
+
+	column DateKey
+		dataType: int64
+		lineageTag: e7070d98-8ed4-4369-84fa-3c68fbddfa1b
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column CustomerKey
+		dataType: int64
+		lineageTag: 1620bbeb-95f5-4539-91d5-5bc9b94c50bd
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	column ProductKey
+		dataType: int64
+		lineageTag: 26e82f20-fe69-4741-bc39-92f417f06262
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	column CountryKey
+		dataType: int64
+		lineageTag: 997e9527-846a-40f3-abd9-ea369e55b710
+		summarizeBy: none
+		sourceColumn: CountryKey
+
+	column Invoice
+		dataType: string
+		lineageTag: fcb8d2f4-aef3-4882-84aa-47b114d06aee
+		summarizeBy: none
+		sourceColumn: Invoice
+
+	column StockCode
+		dataType: string
+		lineageTag: 0285d334-08b7-4498-be2a-3e179eb8c9ff
+		summarizeBy: none
+		sourceColumn: StockCode
+
+	column ReturnQty
+		dataType: int64
+		lineageTag: 1449c507-3ca7-4e91-98fe-3cb470c7c56e
+		summarizeBy: sum
+		sourceColumn: ReturnQty
+
+	column ReturnAmount
+		dataType: double
+		lineageTag: 3e2218a7-ba1d-4dd1-ae9b-2945e816a706
+		summarizeBy: sum
+		sourceColumn: ReturnAmount
+
+	partition FactReturns = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\fact_returns.csv"), [Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"ReturnKey", Int64.Type}, {"DateKey", Int64.Type}, {"CustomerKey", Int64.Type}, {"ProductKey", Int64.Type}, {"CountryKey", Int64.Type}, {"Invoice", type text}, {"StockCode", type text}, {"ReturnQty", Int64.Type}, {"ReturnAmount", type number}})
+				in
+				    Typed

@@ -1,0 +1,42 @@
+table _Measures
+	lineageTag: c3d7e933-cf3d-458e-8571-83c88e5a4c4e
+
+	measure Revenue = SUM(FactSales[LineAmount])
+		formatString: £#,0.00
+		lineageTag: a815b568-20ef-46f5-af07-72afbdca3cd6
+
+	measure Orders = DISTINCTCOUNT(FactSales[Invoice])
+		formatString: #,0
+		lineageTag: 4632704a-bba3-4b5a-8379-2b62109a9c4c
+
+	measure Customers = CALCULATE(DISTINCTCOUNT(FactSales[CustomerKey]), FactSales[CustomerKey] > 0)
+		formatString: #,0
+		lineageTag: e9a82627-caea-48c9-9401-1f703de46bd0
+
+	measure AOV = DIVIDE([Revenue], [Orders])
+		formatString: £#,0.00
+		lineageTag: 61e7f52a-ee99-49b8-94a1-53328b52c2f4
+
+	measure Return Amount = SUM(FactReturns[ReturnAmount])
+		formatString: £#,0.00
+		lineageTag: 109532c9-e45e-4614-ba24-5c309b08603d
+
+	measure Return Rate = DIVIDE([Return Amount], [Revenue])
+		formatString: 0.0%
+		lineageTag: 1b68146d-ae71-4145-8a88-82767d4e0821
+
+	measure UK Revenue = CALCULATE([Revenue], DimCountry[Country] = "United Kingdom")
+		formatString: £#,0.00
+		lineageTag: 75484a1d-d3df-45e1-a9fa-a9669727922b
+
+	measure UK Share = DIVIDE([UK Revenue], [Revenue])
+		formatString: 0.0%
+		lineageTag: b6f3809c-fa12-493c-a03f-aeb74ad21574
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = #table({"Name"}, { {"_Measures"} })
+				in
+				    Source

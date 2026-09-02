@@ -1,0 +1,78 @@
+table FactSales
+	lineageTag: 6e90e75a-979e-4118-83db-176450c66edb
+
+	column SalesKey
+		dataType: int64
+		lineageTag: 168013df-4b71-4fb2-9cd0-358f814da552
+		summarizeBy: none
+		sourceColumn: SalesKey
+
+	column DateKey
+		dataType: int64
+		lineageTag: 566b7485-b49b-474b-afed-3d2834c68a3b
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column CustomerKey
+		dataType: int64
+		lineageTag: f3ce2dce-798e-488d-b03a-c7ee988be240
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	column ProductKey
+		dataType: int64
+		lineageTag: 7233310b-0ef0-42bf-882d-2c45eeb0631b
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	column CountryKey
+		dataType: int64
+		lineageTag: a2da2a32-8735-4381-bedc-c8c76652a56e
+		summarizeBy: none
+		sourceColumn: CountryKey
+
+	column Invoice
+		dataType: string
+		lineageTag: 4c4a751d-74ed-4ce2-b9fc-3326e4d02e21
+		summarizeBy: none
+		sourceColumn: Invoice
+
+	column StockCode
+		dataType: string
+		lineageTag: e4d61690-a28d-4de8-943b-d217cab2cb78
+		summarizeBy: none
+		sourceColumn: StockCode
+
+	column Quantity
+		dataType: int64
+		lineageTag: 09148f44-d5ef-49ac-8cdb-f6504942aec6
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+	column Price
+		dataType: double
+		lineageTag: 355e7948-2f90-4302-b90d-9a20dc3b8941
+		summarizeBy: sum
+		sourceColumn: Price
+
+	column LineAmount
+		dataType: double
+		lineageTag: a7cf19d3-ff5a-47ca-847a-d27a350ad03e
+		summarizeBy: sum
+		sourceColumn: LineAmount
+
+	column IsGuest
+		dataType: int64
+		lineageTag: 657e6218-bdb2-429c-9d2c-f12b00462e3b
+		summarizeBy: sum
+		sourceColumn: IsGuest
+
+	partition FactSales = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(pDataFolder & "\\fact_sales.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(#"Promoted Headers", {{"SalesKey", Int64.Type}, {"DateKey", Int64.Type}, {"CustomerKey", Int64.Type}, {"ProductKey", Int64.Type}, {"CountryKey", Int64.Type}, {"Invoice", type text}, {"StockCode", type text}, {"Quantity", Int64.Type}, {"Price", type number}, {"LineAmount", type number}, {"IsGuest", Int64.Type}})
+				in
+				    Typed
