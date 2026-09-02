@@ -128,23 +128,22 @@ Orders dipped while AOV rose — fewer baskets, higher value. November still dom
 
 ## Tools Used
 
+- Power BI
 - SQL
 - Python
 - Excel
-- Dashboarding
 
 ---
 
 ## Repository Structure
 
 ```text
-data/          cleaned sales and dimension tables
+data/          cleaned tables (csv / xlsx / parquet)
+excel/         dictionary, cleaning log, summary
 sql/           KPI and quality queries
-python/        cleaning and metric checks
-excel/         dictionary and reconciliation
-dashboard/     interactive dashboard
+python/        EDA / cleaning / feature scripts
+dashboard/     Power BI project (.pbip)
 screenshots/   dashboard page images
-reports/       KPI summary
 artifacts/     walkthrough video
 ```
 
@@ -152,9 +151,9 @@ artifacts/     walkthrough video
 
 ## How to View
 
-1. Review screenshots under [`screenshots/`](./screenshots/).
-2. Watch [`artifacts/commercepulse-demo.mp4`](./artifacts/commercepulse-demo.mp4).
-3. Open KPI figures in [`reports/kpi_summary.json`](./reports/kpi_summary.json).
+1. Open `dashboard/CommercePulse.pbip` in Power BI Desktop
+2. See [`screenshots/`](./screenshots/)
+3. Watch [`artifacts/commercepulse-demo.mp4`](./artifacts/commercepulse-demo.mp4)
 
 ---
 
