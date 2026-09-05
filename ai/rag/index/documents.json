@@ -1,0 +1,194 @@
+[
+  {
+    "id": "kpi_overview",
+    "title": "Executive KPI overview",
+    "text": "Overall revenue is \u00a320,077,305.60 across 39,575 orders and 5,862 registered customers. Average order value is \u00a3507.32. Period runs 2009-12-01 to 2011-12-09. UK revenue share is 85.6% (\u00a317,189,769.60). Return rate is 3.64% by value. Guest checkout lines are 22.9% of sales lines. Calendar 2010\u21922011 revenue change is -3.28%, orders -7.37%, customers -0.05%.",
+    "sql": "SELECT ROUND(SUM(LineAmount),2) AS Revenue, COUNT(DISTINCT Invoice) AS Orders FROM v_fact_sales;"
+  },
+  {
+    "id": "monthly_seasonality",
+    "title": "Monthly seasonality",
+    "text": "Monthly revenue peaks in 2011-11 at \u00a31,453,266 (2751 orders). Softest month in the series is 2011-02 at \u00a3508,082. November gift-season peaks appear in both 2010 and 2011.",
+    "sql": "SELECT YearMonth, Revenue, Orders FROM v_mart_monthly ORDER BY Revenue DESC LIMIT 5;"
+  },
+  {
+    "id": "uk_revenue",
+    "title": "United Kingdom revenue",
+    "text": "United Kingdom contributes \u00a317,189,769.60 (85.6% of total revenue). Across calendar 2010 vs 2011, total revenue moved -3.28% (\u00a39,799,869 \u2192 \u00a39,478,704) while AOV rose from \u00a3498.04 to \u00a3520.04. A UK 'drop' question should be checked against the monthly mart, not only the full-period total \u2014 seasonality and Dec partial months matter.",
+    "sql": "SELECT Country, ROUND(SUM(LineAmount),2) AS Revenue FROM v_fact_sales WHERE Country='United Kingdom';"
+  },
+  {
+    "id": "top_countries",
+    "title": "Top countries by revenue",
+    "text": "Top markets by revenue \u2014 United Kingdom: \u00a317,189,770 revenue, 36,212 orders; EIRE: \u00a3640,175 revenue, 598 orders; Netherlands: \u00a3549,951 revenue, 216 orders; Germany: \u00a3388,401 revenue, 756 orders; France: \u00a3317,203 revenue, 602 orders; Australia: \u00a3168,417 revenue, 89 orders; Spain: \u00a398,789 revenue, 147 orders; Switzerland: \u00a394,248 revenue, 85 orders; Sweden: \u00a386,319 revenue, 99 orders; Denmark: \u00a368,560 revenue, 42 orders.",
+    "sql": "SELECT Country, SUM(LineAmount) AS Revenue FROM v_fact_sales GROUP BY Country ORDER BY Revenue DESC LIMIT 10;"
+  },
+  {
+    "id": "top_products",
+    "title": "Top products by revenue",
+    "text": "Highest revenue SKUs: REGENCY CAKESTAND 3 TIER (\u00a3344,069); WHITE HANGING HEART T-LIGHT HOLDER (\u00a3262,768); JUMBO BAG RED RETROSPOT (\u00a3183,136); PAPER CRAFT , LITTLE BIRDIE (\u00a3168,470); PARTY BUNTING (\u00a3149,109); ASSORTED COLOUR BIRD ORNAMENT (\u00a3131,818); PAPER CHAIN KIT 50'S CHRISTMAS (\u00a3123,003); CHILLI LIGHTS (\u00a385,158); MEDIUM CERAMIC TOP STORAGE JAR (\u00a381,701); SMALL POPCORN HOLDER (\u00a380,888). Top-5 SKUs are 5.5% of revenue.",
+    "sql": "SELECT StockCode, SUM(LineAmount) AS Revenue FROM v_fact_sales GROUP BY StockCode ORDER BY Revenue DESC LIMIT 10;"
+  },
+  {
+    "id": "segments",
+    "title": "RFM customer segments",
+    "text": "Registered customers split into 4 RFM segments. Champions: 979 customers, \u00a312,505,251 revenue; Loyal Customers: 1867 customers, \u00a33,454,527 revenue; Promising: 1381 customers, \u00a3576,974 revenue; At Risk / Lapsed: 1635 customers, \u00a3857,425 revenue. Overall repeat rate is 72.3% and end-window Churned90 rate is 50.7%.",
+    "sql": "-- see data/gold/customer_segments.csv"
+  },
+  {
+    "id": "returns",
+    "title": "Returns and cancellations",
+    "text": "Return value is \u00a3731,662.80, a 3.64% rate versus sales value. Returns include C-prefix cancels and negative quantity lines; fee codes are excluded.",
+    "sql": "SELECT ROUND(SUM(ReturnAmount)/(SELECT SUM(LineAmount) FROM v_fact_sales),4) AS return_rate FROM v_fact_returns;"
+  },
+  {
+    "id": "month_2009-12",
+    "title": "Month 2009-12",
+    "text": "In 2009-12, revenue was \u00a3798,732.03 from 1671 orders and 952 customers. AOV \u00a3478.00, units 425,262.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2009-12';"
+  },
+  {
+    "id": "month_2010-01",
+    "title": "Month 2010-01",
+    "text": "In 2010-01, revenue was \u00a3621,503.43 from 1089 orders and 718 customers. AOV \u00a3570.71, units 390,474.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-01';"
+  },
+  {
+    "id": "month_2010-02",
+    "title": "Month 2010-02",
+    "text": "In 2010-02, revenue was \u00a3538,132.64 from 1189 orders and 771 customers. AOV \u00a3452.59, units 381,627.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-02';"
+  },
+  {
+    "id": "month_2010-03",
+    "title": "Month 2010-03",
+    "text": "In 2010-03, revenue was \u00a3762,148.53 from 1647 orders and 1051 customers. AOV \u00a3462.75, units 525,053.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-03';"
+  },
+  {
+    "id": "month_2010-04",
+    "title": "Month 2010-04",
+    "text": "In 2010-04, revenue was \u00a3646,901.86 from 1437 orders and 939 customers. AOV \u00a3450.18, units 366,084.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-04';"
+  },
+  {
+    "id": "month_2010-05",
+    "title": "Month 2010-05",
+    "text": "In 2010-05, revenue was \u00a3643,835.64 from 1484 orders and 965 customers. AOV \u00a3433.85, units 395,447.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-05';"
+  },
+  {
+    "id": "month_2010-06",
+    "title": "Month 2010-06",
+    "text": "In 2010-06, revenue was \u00a3697,834.87 from 1615 orders and 1035 customers. AOV \u00a3432.10, units 406,253.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-06';"
+  },
+  {
+    "id": "month_2010-07",
+    "title": "Month 2010-07",
+    "text": "In 2010-07, revenue was \u00a3633,839.42 from 1509 orders and 925 customers. AOV \u00a3420.04, units 337,573.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-07';"
+  },
+  {
+    "id": "month_2010-08",
+    "title": "Month 2010-08",
+    "text": "In 2010-08, revenue was \u00a3674,842.89 from 1402 orders and 910 customers. AOV \u00a3481.34, units 471,952.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-08';"
+  },
+  {
+    "id": "month_2010-09",
+    "title": "Month 2010-09",
+    "text": "In 2010-09, revenue was \u00a3869,727.16 from 1789 orders and 1136 customers. AOV \u00a3486.15, units 583,377.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-09';"
+  },
+  {
+    "id": "month_2010-10",
+    "title": "Month 2010-10",
+    "text": "In 2010-10, revenue was \u00a31,095,413.63 from 2244 orders and 1492 customers. AOV \u00a3488.15, units 619,532.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-10';"
+  },
+  {
+    "id": "month_2010-11",
+    "title": "Month 2010-11",
+    "text": "In 2010-11, revenue was \u00a31,431,116.84 from 2721 orders and 1606 customers. AOV \u00a3525.95, units 724,294.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-11';"
+  },
+  {
+    "id": "month_2010-12",
+    "title": "Month 2010-12",
+    "text": "In 2010-12, revenue was \u00a31,184,572.43 from 1551 orders and 884 customers. AOV \u00a3763.75, units 537,522.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2010-12';"
+  },
+  {
+    "id": "month_2011-01",
+    "title": "Month 2011-01",
+    "text": "In 2011-01, revenue was \u00a3670,639.46 from 1081 orders and 739 customers. AOV \u00a3620.39, units 386,745.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-01';"
+  },
+  {
+    "id": "month_2011-02",
+    "title": "Month 2011-02",
+    "text": "In 2011-02, revenue was \u00a3508,081.54 from 1093 orders and 757 customers. AOV \u00a3464.85, units 282,635.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-02';"
+  },
+  {
+    "id": "month_2011-03",
+    "title": "Month 2011-03",
+    "text": "In 2011-03, revenue was \u00a3690,591.84 from 1440 orders and 973 customers. AOV \u00a3479.58, units 376,198.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-03';"
+  },
+  {
+    "id": "month_2011-04",
+    "title": "Month 2011-04",
+    "text": "In 2011-04, revenue was \u00a3515,899.66 from 1236 orders and 853 customers. AOV \u00a3417.39, units 307,664.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-04';"
+  },
+  {
+    "id": "month_2011-05",
+    "title": "Month 2011-05",
+    "text": "In 2011-05, revenue was \u00a3740,472.33 from 1668 orders and 1054 customers. AOV \u00a3443.93, units 394,667.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-05';"
+  },
+  {
+    "id": "month_2011-06",
+    "title": "Month 2011-06",
+    "text": "In 2011-06, revenue was \u00a3738,233.99 from 1525 orders and 990 customers. AOV \u00a3484.09, units 388,141.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-06';"
+  },
+  {
+    "id": "month_2011-07",
+    "title": "Month 2011-07",
+    "text": "In 2011-07, revenue was \u00a3688,802.67 from 1452 orders and 946 customers. AOV \u00a3474.38, units 399,302.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-07';"
+  },
+  {
+    "id": "month_2011-08",
+    "title": "Month 2011-08",
+    "text": "In 2011-08, revenue was \u00a3724,708.16 from 1340 orders and 933 customers. AOV \u00a3540.83, units 420,709.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-08';"
+  },
+  {
+    "id": "month_2011-09",
+    "title": "Month 2011-09",
+    "text": "In 2011-09, revenue was \u00a31,029,245.38 from 1819 orders and 1259 customers. AOV \u00a3565.83, units 568,719.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-09';"
+  },
+  {
+    "id": "month_2011-10",
+    "title": "Month 2011-10",
+    "text": "In 2011-10, revenue was \u00a31,104,063.97 from 2006 orders and 1361 customers. AOV \u00a3550.38, units 619,613.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-10';"
+  },
+  {
+    "id": "month_2011-11",
+    "title": "Month 2011-11",
+    "text": "In 2011-11, revenue was \u00a31,453,265.98 from 2751 orders and 1660 customers. AOV \u00a3528.27, units 746,975.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-11';"
+  },
+  {
+    "id": "month_2011-12",
+    "title": "Month 2011-12",
+    "text": "In 2011-12, revenue was \u00a3614,699.25 from 816 orders and 614 customers. AOV \u00a3753.31, units 312,652.",
+    "sql": "SELECT * FROM v_mart_monthly WHERE YearMonth='2011-12';"
+  }
+]
