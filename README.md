@@ -141,7 +141,7 @@ Orders dipped while AOV rose — fewer baskets, higher value. November still dom
 data/          cleaned tables (csv / xlsx / parquet)
 excel/         dictionary, cleaning log, summary
 sql/           KPI and quality queries
-python/        EDA / cleaning / feature scripts
+notebooks/     analysis notebooks (.ipynb)
 dashboard/     Power BI project (.pbip)
 screenshots/   dashboard page images
 artifacts/     walkthrough video
