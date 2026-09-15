@@ -1,10 +1,12 @@
 # CommercePulse
 
-Retail intelligence platform on the UCI **Online Retail II** extract (UK online gift retailer, Dec 2009 – Dec 2011). End-to-end path from medallion data engineering through customer science, a multi-page Power BI commercial dashboard, and a local insights assistant over the gold marts.
+Retail intelligence platform on the UCI **Online Retail II** extract (UK online gift retailer, Dec 2009 – Dec 2011). End-to-end path from medallion data engineering through customer science (RFM, churn baseline), portfolio commercial report visuals wired to gold marts, and a local **TF-IDF** insights assistant over gold facts.
 
 **GitHub:** [tnishant082-dev/CommercePulse](https://github.com/tnishant082-dev/CommercePulse)
 
-**Open in Power BI Desktop:** [`dashboard/CommercePulse.pbip`](./dashboard/CommercePulse.pbip) (semantic model wired to `data/gold/*.csv`)
+**Semantic model stub:** [`dashboard/CommercePulse.pbip`](./dashboard/CommercePulse.pbip) (wired to `data/gold/*.csv`)
+
+**Portfolio report visuals:** [`screenshots/`](./screenshots/) — numbers from gold / `reports/kpi_summary.json`
 
 **Walkthrough:** [`artifacts/commercepulse-demo.mp4`](./artifacts/commercepulse-demo.mp4)
 
@@ -20,8 +22,8 @@ It is one repo covering:
 |---|---|
 | **Data Engineering** | Medallion folders (raw → bronze → silver → gold), SQL staging / quality / marts, Excel dictionary + cleaning log + reconciliation |
 | **Data Science** | RFM k-means segments, churn propensity baseline, seasonal-naive demand baseline — metrics computed, limitations written down |
-| **Data Analytics** | Six-page dark Power BI Desktop report (charcoal + `#F2C811`), star schema, screenshots + silent demo |
-| **AI Engineering** | Offline TF-IDF insights assistant over gold facts + golden-question eval harness |
+| **Data Analytics** | Six-page dark portfolio report visuals (charcoal + `#F2C811`), star schema stub, screenshots + silent demo |
+| **AI Engineering** | Offline TF-IDF retrieval over gold facts + golden-question eval harness |
 
 ---
 
@@ -53,7 +55,7 @@ Online Retail II (UCI) ──► data/raw
         │
         ├──► SQL KPI pack + Excel reconciliation
         ├──► RFM segments · churn / demand baselines
-        ├──► Power BI semantic model + report pages
+        ├──► Semantic model stub + portfolio report visuals
         └──► Insights assistant (TF-IDF retrieval over gold summaries)
 ```
 
@@ -66,7 +68,7 @@ Online Retail II (UCI) ──► data/raw
 3. **Silver** apply revenue rules; separate returns; conform entities
 4. **Gold** star schema + `ml_customer_features` + monthly / country / product marts
 5. **Science** `python/02_customer_segmentation.py`, `python/03_churn_baseline.py`
-6. **BI** open `dashboard/CommercePulse.pbip` (or review `screenshots/`)
+6. **BI** review `screenshots/` or open the semantic model stub `dashboard/CommercePulse.pbip`
 7. **Assistant** `python ai/rag/build_index.py` then `python ai/rag/retrieve.py "…"` or `streamlit run ai/app.py`
 
 ---
@@ -113,7 +115,7 @@ See `reports/model_metrics.json` for feature lists and written limitations. Thes
 
 ## Dashboard pages
 
-Dark charcoal Power BI Desktop chrome, gold accents, slicer strip, left rail, bottom tabs:
+Report visuals below are **portfolio pages styled for review** (dark charcoal + gold `#F2C811`); **all KPI numbers come from `data/gold` / [`reports/kpi_summary.json`](./reports/kpi_summary.json)**. They are not Power BI Desktop exports or a live published workspace.
 
 1. **Executive Overview** — KPI cards, monthly revenue/orders, country mix, segment snapshot
 2. **Sales Performance** — 2010 vs 2011, monthly revenue & AOV, orders / units
@@ -122,7 +124,7 @@ Dark charcoal Power BI Desktop chrome, gold accents, slicer strip, left rail, bo
 5. **Operations / Returns** — return value trend, quality filters, guest-share note
 6. **Model Insights** — AUC / MAPE cards with caveats on the same page
 
-Screenshots live in [`screenshots/`](./screenshots/). The `.pbip` report pages are named placeholders wired to the gold model; the PNGs are the visual proof for portfolio review.
+Screenshots live in [`screenshots/`](./screenshots/). The `.pbip` is a semantic model stub wired to gold; the PNGs are portfolio visuals for review.
 
 ---
 
@@ -159,13 +161,13 @@ Star schema on gold:
 - `ml_customer_features` / `customer_segments` — RFM + Churned90 + cluster labels
 - Marts: `mart_monthly`, `mart_country`, `mart_top_products`
 
-Power BI relationships and DAX measures (`Revenue`, `Orders`, `Customers`, `AOV`, `Return Rate`, `UK Share`) are in `dashboard/CommercePulse.SemanticModel/`.
+Semantic model stub relationships and DAX measures (`Revenue`, `Orders`, `Customers`, `AOV`, `Return Rate`, `UK Share`) are in `dashboard/CommercePulse.SemanticModel/`.
 
 ---
 
 ## Tools
 
-Python 3 · pandas · scikit-learn · matplotlib · openpyxl · pyarrow · Streamlit · SQL (MySQL/ANSI) · Power BI Desktop (`.pbip` / TMDL) · ffmpeg (demo encode)
+Python 3 · pandas · scikit-learn · matplotlib · openpyxl · pyarrow · Streamlit · SQL (MySQL/ANSI) · semantic model stub (`.pbip` / TMDL) · ffmpeg (demo encode)
 
 ---
 
@@ -177,7 +179,7 @@ CommercePulse/
 ├── requirements.txt
 ├── artifacts/commercepulse-demo.mp4
 ├── ai/                  # insights assistant + eval
-├── dashboard/           # CommercePulse.pbip + SemanticModel + Report
+├── dashboard/           # CommercePulse.pbip stub + SemanticModel + Report
 ├── data/
 │   ├── raw/             # SOURCE.txt + online_retail_II.xlsx
 │   ├── bronze/
@@ -186,9 +188,8 @@ CommercePulse/
 ├── excel/               # dictionary, cleaning log, reconciliation
 ├── notebooks/           # cleaning/EDA, segmentation, baselines
 ├── python/              # medallion + segmentation + churn scripts
-│   └── _build/          # screenshot / walkthrough helpers (not the main path)
 ├── reports/             # kpi_summary, model_metrics, segmentation_metrics
-├── screenshots/         # Power BI pages + VS Code SQL/ML shots
+├── screenshots/         # portfolio report visuals + editor-framed SQL/ML shots
 └── sql/                 # staging, quality, marts, KPIs, practice joins
 ```
 
@@ -196,7 +197,7 @@ CommercePulse/
 
 ## Screenshots
 
-### Power BI pages
+### Portfolio report pages
 
 | Page | File |
 |---|---|
@@ -211,9 +212,9 @@ CommercePulse/
 
 ---
 
-## SQL & ML engineering (VS Code)
+## SQL & ML engineering (editor-framed)
 
-Working notes from the SQL + ML path — same repo, editor view.
+Editor-framed portfolio shots of SQL/Python in this repo (not a claim that these are raw IDE screen grabs from a production session):
 
 | Shot | File |
 |---|---|
@@ -258,8 +259,6 @@ python python/01_build_medallion.py
 python python/02_customer_segmentation.py
 python python/03_churn_baseline.py
 
-# optional helpers live under python/_build/ (dashboard PNGs / demo video)
-
 # insights assistant
 python ai/rag/build_index.py
 python ai/rag/retrieve.py "Why did UK revenue change year over year?"
@@ -267,7 +266,7 @@ python ai/eval/run_eval.py
 streamlit run ai/app.py
 ```
 
-Power BI: open `dashboard/CommercePulse.pbip`, confirm `pDataFolder` points at `data/gold`, refresh.
+Optional: open `dashboard/CommercePulse.pbip` stub, confirm `pDataFolder` points at `data/gold`.
 
 Source data: [UCI Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) (Chen, D., 2012). A local copy ships under `data/raw/` when size allows; otherwise follow `data/raw/SOURCE.txt`.
 
